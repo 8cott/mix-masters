@@ -1,10 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import React, { Component } from "react";
 import './App.css';
 
 import CreateDrink from './components/CreateDrink';
 import ShowDrinkList from './components/ShowDrinkList';
 import ShowDrinkDetails from './components/ShowDrinkDetails';
 import UpdateDrinkInfo from './components/UpdateDrinkInfo';
+
+// import Navbar from './components/layout/Navbar';
+// import Landing from './components/layout/Landing';
+// import Register from './components/layout/Register';
+// import Login from './components/layout/Login';
 
 const App = () => {
   return (
