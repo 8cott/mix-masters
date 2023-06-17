@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from './NavBar';
 
 function HomePage() {
   return (
@@ -16,26 +17,7 @@ function HomePage() {
         />
       </head>
       <body>
-        <header className="primary-header">
-          <div className="container">
-            <a href="#">
-              <img src="/src/assets/images/mix-master-logo.png" alt="logo" />
-            </a>
-            <nav className="priamry-navigation">
-              <ul aria-label="Primary" role="list" className="nav-list">
-                <li>
-                  <a href="/">Home</a>
-                </li>
-                <li>
-                  <a href="/show-drink-list">Drinks</a>
-                </li>
-                <li>
-                  <a href="#">About Us</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
+       <NavBar/>
 
         <main>
           <section>

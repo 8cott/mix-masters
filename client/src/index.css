@@ -1,9 +1,9 @@
 :root{
-  --text: #191c12;
-  --background: #f6f7f2;
-  --primary-button: #27373f;
-  --secondary-button: #ffffff;
-  --accent: #000000;
+  --text: hsl(298, 47%, 10%);
+  --background: hsl(190, 91%, 46%);
+  --primary-button: hsl(148, 50%, 61%);
+  --secondary-button: hsl(145, 40%, 34%);
+  --accent: hsl(30, 97%, 52%);
 
   --ff-primary: "Be Vietnam Pro", sans-serif;
 
@@ -58,6 +58,11 @@
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: var(--text);
 }
 
 /* Set core root defaults */
@@ -149,6 +154,10 @@ body{
   font-family: var(--ff-body);
   color: var(--text);
   background-color: var(--background);
+}
+
+a:hover{
+  color: var(--accent);
 }
 
 .button{
