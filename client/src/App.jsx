@@ -15,17 +15,20 @@ import UpdateDrinkInfo from './components/UpdateDrinkInfo';
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path='/' element={<HomePage/>} />
-          <Route exact path='/show-drink-list' element={<ShowDrinkList />} />
-          <Route path='/create-drink' element={<CreateDrink />} />
-          <Route path='/edit-drink/:id' element={<UpdateDrinkInfo />} />
-          <Route path='/show-drink/:id' element={<ShowDrinkDetails />} />
-        </Routes>
-      </div>
-    </Router>
+    <>
+      <Landing />
+      <Router>
+        <div>
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route exact path='/show-drink-list' element={<ShowDrinkList />} />
+            <Route path='/create-drink' element={<CreateDrink />} />
+            <Route path='/edit-drink/:id' element={<UpdateDrinkInfo />} />
+            <Route path='/show-drink/:id' element={<ShowDrinkDetails />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
   );
 };
 
