@@ -18,7 +18,22 @@ const Login = () => {
       email: state.email,
       password: state.password
     };
-    console.log(userData);
+    
+    fetch('http://localhost:8000/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      if (data.token) {
+        localStorage.setItem('jwtToken', data.token);
+      }
+    })
+    .catch((error) => console.error('Error:', error));
   };
 
   const { errors } = state;

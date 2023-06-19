@@ -22,8 +22,19 @@ const Register = () => {
       password: state.password,
       password2: state.password2
     };
-    console.log(newUser);
+    
+    fetch('http://localhost:8000/api/users/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch((error) => console.error('Error:', error));
   };
+  
 
   const { errors } = state;
 

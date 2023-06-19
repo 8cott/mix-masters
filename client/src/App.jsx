@@ -10,25 +10,24 @@ import UpdateDrinkInfo from './components/UpdateDrinkInfo';
 
 // import Navbar from './components/layout/Navbar';
 // import Landing from './components/layout/Landing';
-// import Register from './components/auth/Register';
-// import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 const App = () => {
   return (
-    <>
-      <Landing />
-      <Router>
-        <div>
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route exact path='/show-drink-list' element={<ShowDrinkList />} />
-            <Route path='/create-drink' element={<CreateDrink />} />
-            <Route path='/edit-drink/:id' element={<UpdateDrinkInfo />} />
-            <Route path='/show-drink/:id' element={<ShowDrinkDetails />} />
-          </Routes>
-        </div>
-      </Router>
-    </>
+    <Router>
+      <div>
+        <Routes>
+          <Route path='/' element={<HomePage/>} />
+          <Route exact path='/show-drink-list' element={<ShowDrinkList />} />
+          <Route path='/create-drink' element={<CreateDrink />} />
+          <Route path='/edit-drink/:id' element={<UpdateDrinkInfo />} />
+          <Route path='/show-drink/:id' element={<ShowDrinkDetails />} />
+          <Route path='/register' element={<Register/>} />
+          <Route path='/login' element={<Login/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
