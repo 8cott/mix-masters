@@ -129,6 +129,18 @@ svg {
   line-height: 1.1;
 }
 
+.mix-master-logo{
+  width: 10rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.nav-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .container{
   --max-width: 1110px;
   --padding: 1rem;

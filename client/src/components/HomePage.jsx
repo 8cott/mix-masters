@@ -38,7 +38,7 @@ function HomePage() {
             <div className="even-columns">
               <div>
                 <a href="#">
-                  <img src="/src/assets/images/mix-master-logo.png" alt="logo" />
+                  <img className='mix-master-logo' src="/src/assets/images/mix-master-logo.png" alt="logo" />
                 </a>
                 <ul role="list" aria-label="social links">
                   <li>
