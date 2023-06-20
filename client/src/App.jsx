@@ -12,8 +12,8 @@ import Register from './components/auth/Register';
 
 // import Navbar from './components/layout/Navbar';
 // import Landing from './components/layout/Landing';
-// import Register from './components/auth/Register';
-// import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 const App = () => {
   return (
@@ -25,8 +25,8 @@ const App = () => {
           <Route path='/create-drink' element={<CreateDrink />} />
           <Route path='/edit-drink/:id' element={<UpdateDrinkInfo />} />
           <Route path='/show-drink/:id' element={<ShowDrinkDetails />} />
-          <Route path='/login' element={<Login/>} />
           <Route path='/register' element={<Register/>} />
+          <Route path='/login' element={<Login/>} />
         </Routes>
       </div>
     </Router>
