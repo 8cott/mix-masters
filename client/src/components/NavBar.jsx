@@ -1,13 +1,18 @@
 import React from "react";
-import Login from "./auth/Login";
-import Register from "./auth/Register"
+import { Link, useLocation } from "react-router-dom";
+import Login_Register from "./auth/Login_Register";
 
 function NavBar() {
+  const location = useLocation();
+
+   // Check if the current path is the Login page
+   const isLoginPage = location.pathname === "/login";
+
   return (
     <header className="primary-header">
       <div className="container">
         <div className="nav-wrapper">
-          <a href="#">
+          <a href="/">
             <img className='mix-master-logo' src="/src/assets/images/mix-master-logo.png" alt="logo" />
           </a>
           <nav className="primary-navigation">
@@ -26,10 +31,15 @@ function NavBar() {
               <li>
                 <a href="#">About Us</a>
               </li>
-            </ul> 
+              {!isLoginPage && (
+                <div>
+                  <Link to="/login">
+                    <button className="button">Login/Register</button>
+                  </Link>
+                </div>
+              )}
+            </ul>
           </nav>
-          <Login/>
-          <Register/>
         </div>
       </div>
     </header>

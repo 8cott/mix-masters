@@ -79,6 +79,10 @@ body {
 body {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  font-size: var(--fs-body);
+  font-family: var(--ff-body);
+  color: var(--text);
+  background-color: var(--background);
 }
 
 /* A elements that don't have a class get default styles */
@@ -130,7 +134,7 @@ svg {
 }
 
 .mix-master-logo{
-  width: 10rem;
+  width: 8rem;
   aspect-ratio: 1;
   border-radius: 50%;
 }
@@ -161,19 +165,36 @@ svg {
   }
 }
 
-body{
-  font-size: var(--fs-body);
-  font-family: var(--ff-body);
-  color: var(--text);
-  background-color: var(--background);
-}
-
 a:hover{
   color: var(--accent);
 }
 
-.button{
+.button {
   cursor: pointer;
   text-decoration: none;
   border: 0;
+  border-radius: 100vmax;
+  padding: .75em 1.25em;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-400);
+  line-height: 1;
+  color: var(--text);
+  text-align: center;
+  background-color: var(--primary-button);
+  box-shadow: 0 1.125em 1em -1em var(--secondary-button);
+}
+
+.button:hover{
+  color: var(--accent);
+}
+
+.button:active {
+  transform: translateY(.25em);
+  transition: 100ms;
+}
+
+@media (max-width: 50em){
+  .primary-navigation{
+    display: none;
+  }
 }
