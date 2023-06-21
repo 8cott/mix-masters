@@ -14,6 +14,9 @@ import Login_Register from './components/auth/Login_Register';
 // import Navbar from './components/layout/Navbar';
 // import Landing from './components/layout/Landing';
 
+// import AboutUs from './components/AboutUs';
+
+
 const App = () => {
   return (
     <Router>
@@ -26,6 +29,7 @@ const App = () => {
           <Route path='/show-drink/:id' element={<ShowDrinkDetails />} />
           {/* <Route path='/register' element={<Register/>} /> */}
           <Route path='/login' element={<Login_Register/>} />
+          {/* <Route path='/' element={<AboutUs/>} /> */}
         </Routes>
       </div>
     </Router>
