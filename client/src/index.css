@@ -145,6 +145,11 @@ svg {
   justify-content: space-between;
 }
 
+.nav-list{
+  display: flex;
+  gap: clamp(10rem, 5vw, 15rem);
+}
+
 .container{
   --max-width: 1110px;
   --padding: 1rem;
@@ -185,16 +190,10 @@ a:hover{
 }
 
 .button:hover{
-  color: var(--accent);
+  background-color: var(--accent);
 }
 
 .button:active {
   transform: translateY(.25em);
   transition: 100ms;
-}
-
-@media (max-width: 50em){
-  .primary-navigation{
-    display: none;
-  }
 }
