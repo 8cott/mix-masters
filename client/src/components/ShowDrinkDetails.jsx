@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import '../App.css';
 import axios from 'axios';
+import '../App.css';
 
 function ShowDrinkDetails(props) {
   const [drink, setDrink] = useState({});
@@ -11,7 +11,7 @@ function ShowDrinkDetails(props) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/drinks/${id}`)
+      .get(`http://localhost:8000/drinks/${id}`)
       .then((res) => {
         setDrink(res.data);
       })
@@ -20,15 +20,23 @@ function ShowDrinkDetails(props) {
       });
   }, [id]);
 
-  const onDeleteClick = (id) => {
-    axios
-      .delete(`http://localhost:8000/api/drinks/${id}`)
-      .then((res) => {
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log('Error form ShowDrinkDetails_deleteClick');
-      });
+  const handleDelete = () => {
+    const confirmed = window.confirm('Are you sure you want to delete this drink?');
+    if (confirmed) {
+      axios
+        .delete(`http://localhost:8000/drinks/${id}`)
+        .then((res) => {
+          console.log(res.data);
+          navigate('/');
+        })
+        .catch((err) => {
+          console.log('Error from handleDelete');
+        });
+    }
+  };
+
+  const handleEdit = () => {
+    navigate(`/edit-drink/${drink._id}`);
   };
 
   const DrinkItem = (
@@ -66,7 +74,7 @@ function ShowDrinkDetails(props) {
         <div className="row">
           <div>
             <br /> <br />
-            <Link to="/">Show Drink List</Link>
+            <Link to="/show-drink-list">Show Drink List</Link>
           </div>
           <br />
           <div>
@@ -76,17 +84,14 @@ function ShowDrinkDetails(props) {
           </div>
           <div>{DrinkItem}</div>
           <div>
-            <button
-              type="button"
-              onClick={() => {
-                onDeleteClick(drink._id);
-              }}
-            >
+            <button type="button" onClick={handleDelete}>
               Delete Drink
             </button>
           </div>
           <div>
-            <Link to={`/edit-drink/${drink._id}`}>Edit Drink</Link>
+            <button type="button" onClick={handleEdit}>
+              Edit Drink
+            </button>
           </div>
         </div>
       </div>

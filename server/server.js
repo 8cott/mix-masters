@@ -1,45 +1,49 @@
-const express = require('express');
-const connectDB = require('./config/db');
-const connectDBAuth = require('./config/db-auth');
-const cors = require('cors');
-const bodyParser = require('body-parser')
+// DEPENDENCIES
+const express = require('express')
+const methodOverride = require('method-override')
+const mongoose = require('./config/db')
+const cookieParser = require('cookie-parser');
+const authRoute = require('./routes/AuthRoute');
 
-const passport = require('passport')
-const users = require('./routes/api/users')
+// CONFIGURATION
+require('dotenv').config({ path: './.env' })
+const PORT = process.env.PORT
+const app = express()
 
-// routes
-const drinks = require('./routes/api/drinks');
+// MIDDLEWARE
+app.use(express.static('public'))
+app.use(express.json());
+app.use(express.urlencoded({extended: true}))
+app.use(methodOverride('_method'))
+app.use(cookieParser());
 
-const app = express();
+// Enable CORS
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Credentials', true);   
+  next();
+});
 
-// Connect Database
-connectDB();
-connectDBAuth();
+// ROUTES
+app.get('/', (req, res) => {
+  res.redirect('/drinks');
+});
+app.use('/', authRoute);
 
-// cors
-app.use(cors({ origin: true, credentials: true }));
+// DRINKS
+const drink_controller = require('./controllers/drink_controller.js');
+app.use('/drinks', drink_controller);
 
-// Body Parser Middleware
-app.use(
-    bodyParser.urlencoded({
-      extended: false
-    })
-  );
-  app.use(bodyParser.json());
+// 404 Page
+app.use('*', (req, res) => {
+    res.send('404')
+  })  
 
-// Passport Middleware
-app.use(passport.initialize());
-require('./config/passport')(passport);
-app.use('/api/users', users);
+// LISTEN
+app.listen(PORT, () => {
+  console.log('listening on port', PORT);
+})
 
-// Init Middleware
-app.use(express.json({ extended: false }));
-
-app.get('/', (req, res) => res.send('Hello world!'));
-
-// use Routes
-app.use('/api/drinks', drinks);
-
-const port = process.env.PORT || 8082;
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
+module.exports = app;

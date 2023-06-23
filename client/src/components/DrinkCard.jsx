@@ -7,11 +7,13 @@ const DrinkCard = (props) => {
 
   return (
     <div className='card-container'>
-      <img
-        src='https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
-        alt='Drinks'
-        height={200}
-      />
+      <Link to={`/show-drink/${drink._id}`}>
+        <img
+          src='https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80'
+          alt='Drinks'
+          height={200}
+        />
+      </Link>
       <div className='desc'>
         <h2>
           <Link to={`/show-drink/${drink._id}`}>{drink.drink_name}</Link>

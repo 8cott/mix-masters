@@ -49,13 +49,13 @@ function HomePage() {
                 <nav className="footer-nav">
                   <ul aria-label="Footer" role="list">
                     <li>
-                      <a href="#">Home</a>
+                      <a href="/">Home</a>
                     </li>
                     <li>
-                      <a href="#">Drinks</a>
+                      <a href="show-drink-list">Drinks</a>
                     </li>
                     <li>
-                      <a href="#">About Us</a>
+                      <a href="/about">About Us</a>
                     </li>
                   </ul>
                 </nav>

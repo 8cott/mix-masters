@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../App.css';
+import { toast } from 'react-toastify';
+import { AuthContext } from './AuthContext';
 
 function UpdateDrinkInfo(props) {
   const [drink, setDrink] = useState({
-    drink_name: ' ',
-    ingredients: ' ',
-    recipe: ' ',
-    author: ' ',
+    drink_name: '',
+    ingredients: '',
+    recipe: '',
+    author: '',
   });
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/drinks/${id}`)
+      .get(`http://localhost:8000/drinks/${id}`)
       .then((res) => {
         setDrink({
           drink_name: res.data.drink_name,
@@ -29,6 +31,16 @@ function UpdateDrinkInfo(props) {
         console.log('Error from UpdateDrinkInfo');
       });
   }, [id]);
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      toast.info('You must be logged in to access this page', {
+        position: 'bottom-left',
+        toastId: 'login-toast',
+      });
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
 
   const onChange = (e) => {
     setDrink({ ...drink, [e.target.name]: e.target.value });
@@ -45,7 +57,7 @@ function UpdateDrinkInfo(props) {
     };
 
     axios
-      .put(`http://localhost:8000/api/drinks/${id}`, data)
+      .put(`http://localhost:8000/drinks/${id}`, data)
       .then((res) => {
         navigate(`/show-drink/${id}`);
       })

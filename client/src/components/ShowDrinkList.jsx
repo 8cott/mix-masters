@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import DrinkCard from './DrinkCard';
+import '../App.css';
 
 function ShowDrinkList() {
   const [drinks, setDrinks] = useState([]);
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/drinks')
+      .get('http://localhost:8000/drinks')
       .then((res) => {
         setDrinks(res.data);
       })
@@ -30,10 +29,6 @@ function ShowDrinkList() {
           <div>
             <br />
             <h2>Drinks List</h2>
-          </div>
-
-          <div>
-            <Link to="/create-drink">+ Add New Drink</Link>
             <br />
             <br />
             <hr />

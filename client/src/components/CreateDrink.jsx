@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { AuthContext } from './AuthContext';
 
-import { useNavigate } from 'react-router-dom';
-
-const CreateDrink = (props) => {
-  // Define the state with useState hook
+const CreateDrink = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
   const [drink, setDrink] = useState({
     drink_name: '',
     ingredients: '',
@@ -14,15 +14,37 @@ const CreateDrink = (props) => {
     author: '',
   });
 
+  useEffect(() => {
+    if (!isLoggedIn) {
+      toast.info('You must be logged in to access this page', {
+        position: 'bottom-left',
+        toastId: 'login-toast',
+      });
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
+
   const onChange = (e) => {
     setDrink({ ...drink, [e.target.name]: e.target.value });
+  };
+
+  const handleSuccess = (msg) => {
+    toast.success(msg, {
+      position: 'bottom-left',
+    });
+  };
+
+  const handleError = (err) => {
+    toast.error(err, {
+      position: 'bottom-left',
+    });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8000/api/drinks', drink)
+      .post('http://localhost:8000/drinks', drink)
       .then((res) => {
         setDrink({
           drink_name: '',
@@ -31,11 +53,15 @@ const CreateDrink = (props) => {
           author: '',
         });
 
-        // Push to /
-        navigate('/');
+        console.log('Successfully Created Drink');
+        handleSuccess('Successfully Created Drink');
+
+        console.log('Newly created drink ID:', res.data._id);
+        navigate(`/show-drink/${res.data._id}`);
       })
       .catch((err) => {
         console.log('Error in CreateDrink!');
+        handleError('Error in creating drink');
       });
   };
 
