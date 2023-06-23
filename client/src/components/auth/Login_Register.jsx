@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'; // Added useEffect
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import NavBar from '../NavBar';
 import '../../../../client/src/login.css';
 
@@ -12,10 +11,10 @@ const Login_Register = () => {
     errors: {},
   });
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Added isLoggedIn state
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    console.log('isLoggedIn changed:', isLoggedIn); // Log when isLoggedIn changes
+    console.log('isLoggedIn changed:', isLoggedIn);
   }, [isLoggedIn]);
 
   const onChange = (e) => {
@@ -24,13 +23,15 @@ const Login_Register = () => {
 
   const onSubmit = (e, formName) => {
     e.preventDefault();
-
+    console.log('onSubmit called');
     if (formName === 'login') {
       const userData = {
         email: state.email,
         password: state.password,
       };
-
+  
+      console.log('Logging in:', userData); // Add this line to log the userData object
+  
       fetch('http://localhost:8000/api/users/login', {
         method: 'POST',
         headers: {
@@ -38,12 +39,17 @@ const Login_Register = () => {
         },
         body: JSON.stringify(userData),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Login request failed');
+          }
+          return response.json();
+        })
         .then((data) => {
-          console.log(data);
+          console.log('Login response:', data); // Add this line to log the response data
           if (data.token) {
             localStorage.setItem('jwtToken', data.token);
-            setIsLoggedIn(true); // Set isLoggedIn to true upon successful login
+            setIsLoggedIn(true);
           }
         })
         .catch((error) => console.error('Error:', error));
@@ -54,7 +60,9 @@ const Login_Register = () => {
         password: state.password,
         password2: state.password2,
       };
-
+  
+      console.log('Signing up:', newUser); // Add this line to log the newUser object
+  
       fetch('http://localhost:8000/api/users/register', {
         method: 'POST',
         headers: {
@@ -62,18 +70,28 @@ const Login_Register = () => {
         },
         body: JSON.stringify(newUser),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Signup request failed');
+          }
+          return response.json();
+        })
         .then((data) => {
-          console.log(data);
+          console.log('Signup response:', data); // Add this line to log the response data
           if (data.success) {
-            setIsLoggedIn(true); // Set isLoggedIn to true upon successful registration
+
           }
         })
         .catch((error) => console.error('Error:', error));
     }
   };
-
+  
   const { errors } = state;
+
+  // Render different content based on isLoggedIn state
+  if (isLoggedIn) {
+    return <div>User successfully registered or logged in!</div>;
+  }
 
   return (
     <div>

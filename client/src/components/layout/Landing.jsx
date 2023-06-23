@@ -18,7 +18,7 @@ const Landing = () => {
           <br />
           <div className="col s6">
             <Link
-              to="/register"
+              to="/login" // Update the link to "/login"
               style={{
                 width: "140px",
                 borderRadius: "3px",
@@ -31,7 +31,7 @@ const Landing = () => {
           </div>
           <div className="col s6">
             <Link
-              to="/login"
+              to="/login" // Update the link to "/login"
               style={{
                 width: "140px",
                 borderRadius: "3px",
