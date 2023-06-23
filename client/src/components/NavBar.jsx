@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import Login_Register from "./auth/Login_Register";
+import '../../../client/src/index.css';
 
 function NavBar() {
   const location = useLocation();
@@ -31,15 +31,15 @@ function NavBar() {
               <li>
                 <a href="#">About Us</a>
               </li>
-              {!isLoginPage && (
+            </ul>
+          </nav>
+          {!isLoginPage && (
                 <div>
                   <Link to="/login">
                     <button className="button">Login/Register</button>
                   </Link>
                 </div>
               )}
-            </ul>
-          </nav>
         </div>
       </div>
     </header>

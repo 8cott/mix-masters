@@ -4,19 +4,6 @@ import NavBar from './NavBar';
 function HomePage() {
   return (
     <div>
-      <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" href="/client/src/index.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mix Masters</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body>
        <NavBar/>
 
         <main>
@@ -84,7 +71,6 @@ function HomePage() {
             </div>
           </div>
         </footer>
-      </body>
       <script type="module" src="/src/app.jsx"></script>
     </div>
   );
