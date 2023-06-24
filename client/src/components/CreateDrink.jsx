@@ -6,7 +6,8 @@ import { AuthContext } from './AuthContext';
 
 const CreateDrink = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
+
   const [drink, setDrink] = useState({
     drink_name: '',
     ingredients: '',
@@ -24,6 +25,15 @@ const CreateDrink = () => {
     }
   }, [isLoggedIn, navigate]);
 
+  useEffect(() => {
+    if (user) {
+      setDrink((prevDrink) => ({
+        ...prevDrink,
+        author: user.username,
+      }));
+    }
+  }, [user]);
+  
   const onChange = (e) => {
     setDrink({ ...drink, [e.target.name]: e.target.value });
   };
@@ -50,7 +60,6 @@ const CreateDrink = () => {
           drink_name: '',
           ingredients: '',
           recipe: '',
-          author: '',
         });
 
         console.log('Successfully Created Drink');
@@ -112,7 +121,7 @@ const CreateDrink = () => {
                 />
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <input
                   type="text"
                   placeholder="Author"
@@ -121,7 +130,7 @@ const CreateDrink = () => {
                   value={drink.author}
                   onChange={onChange}
                 />
-              </div>
+              </div> */}
               <input type="submit" />
             </form>
           </div>

@@ -12,8 +12,7 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Link } from '@mui/material';
-import { toast } from 'react-toastify'; 
+import { toast } from 'react-toastify';
 
 const AppBarMUI = () => {
   const { isLoggedIn, setIsLoggedIn } = React.useContext(AuthContext);
@@ -47,71 +46,56 @@ const AppBarMUI = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
+      <AppBar position="static">
         <Toolbar>
           <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
             sx={{ mr: 2 }}
             onClick={handleDrawerToggle}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            <Link href='/' color='inherit' underline='none'>
-              Mix Masters
-            </Link>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, cursor: 'pointer' }}
+            onClick={() => navigate('/')}
+          >
+            Mix Masters
           </Typography>
           {isLoggedIn ? (
-            <Button color='inherit' onClick={handleLogout}>
+            <Button color="inherit" onClick={handleLogout}>
               Logout
             </Button>
           ) : (
-            <Button color='inherit' onClick={handleLogin}>
+            <Button color="inherit" onClick={handleLogin}>
               Login
             </Button>
           )}
         </Toolbar>
       </AppBar>
-      <Drawer anchor='left' open={isDrawerOpen} onClose={handleDrawerToggle}>
+      <Drawer anchor="left" open={isDrawerOpen} onClose={handleDrawerToggle}>
         <List>
-          <ListItemButton
-            component='a'
-            href='/'
-            onClick={() => handleLinkClick('/')}
-          >
-            <ListItemText primary='Home' />
+          <ListItemButton onClick={() => handleLinkClick('/')}>
+            <ListItemText primary="Home" />
+          </ListItemButton>
+          <ListItemButton onClick={() => handleLinkClick('/show-drink-list')}>
+            <ListItemText primary="Drink List" />
           </ListItemButton>
           <ListItemButton
-            component='a'
-            href='/show-drink-list'
-            onClick={() => handleLinkClick('/show-drink-list')}
-          >
-            <ListItemText primary='Drink List' />
-          </ListItemButton>
-          <ListItemButton
-            component='a'
-            href='/create-drink'
             onClick={() => handleLinkClick('/create-drink')}
-            disabled={!isLoggedIn} // Add disabled attribute
+            disabled={!isLoggedIn}
           >
-            <ListItemText primary='Create Drink' />
+            <ListItemText primary="Create Drink" />
           </ListItemButton>
-          <ListItemButton
-            component='a'
-            href='/about'
-            onClick={() => handleLinkClick('/about')}
-          >
-            <ListItemText primary='About' />
+          <ListItemButton onClick={() => handleLinkClick('/about')}>
+            <ListItemText primary="About" />
           </ListItemButton>
-          <ListItemButton
-            component='a'
-            href='/contact'
-            onClick={() => handleLinkClick('/contact')}
-          >
-            <ListItemText primary='Contact' />
+          <ListItemButton onClick={() => handleLinkClick('/contact')}>
+            <ListItemText primary="Contact" />
           </ListItemButton>
         </List>
       </Drawer>

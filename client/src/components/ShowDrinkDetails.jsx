@@ -27,7 +27,7 @@ function ShowDrinkDetails(props) {
         .delete(`http://localhost:8000/drinks/${id}`)
         .then((res) => {
           console.log(res.data);
-          navigate('/');
+          navigate('/show-drink-list');
         })
         .catch((err) => {
           console.log('Error from handleDelete');
