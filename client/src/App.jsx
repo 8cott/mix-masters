@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <ToastContainer position="bottom-left" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
     </Router>
   );
 };
