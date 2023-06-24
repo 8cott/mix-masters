@@ -35,7 +35,6 @@ function UpdateDrinkInfo(props) {
   useEffect(() => {
     if (!isLoggedIn) {
       toast.info('You must be logged in to access this page', {
-        position: 'bottom-left',
         toastId: 'login-toast',
       });
       navigate('/login');

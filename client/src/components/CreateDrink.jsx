@@ -18,7 +18,6 @@ const CreateDrink = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       toast.info('You must be logged in to access this page', {
-        position: 'bottom-left',
         toastId: 'login-toast',
       });
       navigate('/login');
@@ -33,20 +32,18 @@ const CreateDrink = () => {
       }));
     }
   }, [user]);
-  
+
   const onChange = (e) => {
     setDrink({ ...drink, [e.target.name]: e.target.value });
   };
 
   const handleSuccess = (msg) => {
     toast.success(msg, {
-      position: 'bottom-left',
     });
   };
 
   const handleError = (err) => {
     toast.error(err, {
-      position: 'bottom-left',
     });
   };
 

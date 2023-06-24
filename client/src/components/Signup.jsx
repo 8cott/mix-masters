@@ -24,7 +24,6 @@ const Signup = () => {
 
   const handleError = (err) =>
     toast.error(err, {
-      position: 'bottom-left',
     });
   const handleSuccess = (msg) =>
     toast.success(msg, {

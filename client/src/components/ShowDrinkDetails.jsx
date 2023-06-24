@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import '../App.css';
 
@@ -28,6 +29,9 @@ function ShowDrinkDetails(props) {
         .then((res) => {
           console.log(res.data);
           navigate('/show-drink-list');
+          toast.success('Listing deleted', {
+            position: toast.POSITION.BOTTOM_LEFT
+          });
         })
         .catch((err) => {
           console.log('Error from handleDelete');
