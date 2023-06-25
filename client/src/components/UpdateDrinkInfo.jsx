@@ -9,6 +9,7 @@ function UpdateDrinkInfo(props) {
     drink_name: '',
     ingredients: '',
     recipe: '',
+    image_url: '',
     author: '',
   });
 
@@ -24,6 +25,7 @@ function UpdateDrinkInfo(props) {
           drink_name: res.data.drink_name,
           ingredients: res.data.ingredients,
           recipe: res.data.recipe,
+          image_url: res.data.image_url,
           author: res.data.author,
         });
       })
@@ -52,6 +54,7 @@ function UpdateDrinkInfo(props) {
       drink_name: drink.drink_name,
       ingredients: drink.ingredients,
       recipe: drink.recipe,
+      image_url: drink.image_url,
       author: drink.author,
     };
 
@@ -117,6 +120,19 @@ function UpdateDrinkInfo(props) {
                 name="recipe"
                 className="form-control"
                 value={drink.recipe}
+                onChange={onChange}
+              />
+            </div>
+            <br />
+
+            <div className="form-group">
+              <label htmlFor="image_url">image_url</label>
+              <input
+                type="text"
+                placeholder="image_url"
+                name="image_url"
+                className="form-control"
+                value={drink.image_url}
                 onChange={onChange}
               />
             </div>

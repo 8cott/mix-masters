@@ -64,6 +64,15 @@ function ShowDrinkDetails(props) {
           </tr>
           <tr>
             <th>4</th>
+            <td>Image</td>
+            <td>
+              {drink.image_url && (
+                <img src={drink.image_url} alt="Drink" height={200} />
+              )}
+            </td>
+          </tr>
+          <tr>
+            <th>5</th>
             <td>Author</td>
             <td>{drink.author}</td>
           </tr>

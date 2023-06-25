@@ -13,9 +13,13 @@ const DrinkSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  image_url: {
+    type: String,
+    required: false,
+  },
   author: {
     type: String,
-    required: false, // Set the author field as optional
+    required: false,
   },
 });
 

@@ -12,6 +12,7 @@ const CreateDrink = () => {
     drink_name: '',
     ingredients: '',
     recipe: '',
+    image_url: '',
     author: '',
   });
 
@@ -50,6 +51,10 @@ const CreateDrink = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (!drink.image_url) {
+      drink.image_url = "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80";
+    }  
+
     axios
       .post('http://localhost:8000/drinks', drink)
       .then((res) => {
@@ -57,6 +62,7 @@ const CreateDrink = () => {
           drink_name: '',
           ingredients: '',
           recipe: '',
+          image_url: '',
         });
 
         console.log('Successfully Created Drink');
@@ -114,6 +120,17 @@ const CreateDrink = () => {
                   name="recipe"
                   className="form-control"
                   value={drink.recipe}
+                  onChange={onChange}
+                />
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  placeholder="Image_URL"
+                  name="image_url"
+                  className="form-control"
+                  value={drink.image_url}
                   onChange={onChange}
                 />
               </div>
