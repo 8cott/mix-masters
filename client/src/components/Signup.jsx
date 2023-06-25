@@ -23,12 +23,9 @@ const Signup = () => {
   };
 
   const handleError = (err) =>
-    toast.error(err, {
-    });
+    toast.error('🍹 Error Creating User');
   const handleSuccess = (msg) =>
-    toast.success(msg, {
-      position: 'bottom-right',
-    });
+    toast.success('🍹 User Created. Welcome!');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -116,7 +113,6 @@ const Signup = () => {
           Already have an account? <Link to={'/login'}>Login</Link>
         </span>
       </form>
-      <ToastContainer />
     </div>
   );
 };

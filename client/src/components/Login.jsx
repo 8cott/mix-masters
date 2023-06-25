@@ -24,8 +24,7 @@ const Login = () => {
     toast.error(err, {
     });
   const handleSuccess = (msg) =>
-    toast.success(msg, {
-    });
+  toast.success('🍹 Logged in successfully');
 
   const handleSubmit = async (e) => {
     e.preventDefault();

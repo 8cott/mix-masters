@@ -18,7 +18,7 @@ const CreateDrink = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      toast.info('You must be logged in to access this page', {
+      toast.warning('🍹 You must be logged in to access this page', {
         toastId: 'login-toast',
       });
       navigate('/login');
@@ -39,13 +39,11 @@ const CreateDrink = () => {
   };
 
   const handleSuccess = (msg) => {
-    toast.success(msg, {
-    });
+    toast.success('🍹 Created Drink Successfully!');
   };
 
   const handleError = (err) => {
-    toast.error(err, {
-    });
+    toast.error('🍹 Error Creating Drink!');
   };
 
   const onSubmit = (e) => {

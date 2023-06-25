@@ -29,9 +29,7 @@ function ShowDrinkDetails(props) {
         .then((res) => {
           console.log(res.data);
           navigate('/show-drink-list');
-          toast.success('Listing deleted', {
-            position: toast.POSITION.BOTTOM_LEFT
-          });
+          toast('🍹 Drink Deleted!');
         })
         .catch((err) => {
           console.log('Error from handleDelete');

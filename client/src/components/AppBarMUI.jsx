@@ -33,9 +33,7 @@ const AppBarMUI = () => {
   const handleLogout = () => {
     localStorage.removeItem('jwt');
     setIsLoggedIn(false);
-    toast.success('Logged out successfully', {
-      position: toast.POSITION.BOTTOM_LEFT,
-    });
+    toast('🍹 Logged out successfully');
   };
 
   // Close Drawer

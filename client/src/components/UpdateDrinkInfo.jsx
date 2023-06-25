@@ -36,7 +36,7 @@ function UpdateDrinkInfo(props) {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      toast.info('You must be logged in to access this page', {
+      toast.warning('🍹 You must be logged in to access this page', {
         toastId: 'login-toast',
       });
       navigate('/login');
@@ -61,9 +61,11 @@ function UpdateDrinkInfo(props) {
     axios
       .put(`http://localhost:8000/drinks/${id}`, data)
       .then((res) => {
+        toast.success(' 🍹 Drink updated successfully');
         navigate(`/show-drink/${id}`);
       })
       .catch((err) => {
+        toast.error(' 🍹Error updating drink');
         console.log('Error in UpdateDrinkInfo!');
       });
   };
