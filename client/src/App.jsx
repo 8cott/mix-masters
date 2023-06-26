@@ -9,7 +9,6 @@ import AppBarMUI from './components/AppBarMUI';
 import Signup from '../../client/src/components/Signup';
 import Login from '../../client/src/components/Login';
 import AboutUs from './components/AboutUs';
-import ContactUs from './components/ContactUs';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import StickyFooter from './components/FooterNav';
@@ -25,7 +24,6 @@ const App = () => {
         <Route path="/edit-drink/:id" element={<UpdateDrinkInfo />} />
         <Route path="/show-drink/:id" element={<ShowDrinkDetails />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>

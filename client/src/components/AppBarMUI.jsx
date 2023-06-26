@@ -99,9 +99,6 @@ const AppBarMUI = () => {
           <ListItemButton onClick={() => handleLinkClick('/about')}>
             <ListItemText primary="About" />
           </ListItemButton>
-          <ListItemButton onClick={() => handleLinkClick('/contact')}>
-            <ListItemText primary="Contact" />
-          </ListItemButton>
         </List>
       </Drawer>
     </Box>
