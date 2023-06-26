@@ -3,8 +3,13 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { AuthContext } from './AuthContext';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/system';
 
-function UpdateDrinkInfo(props) {
+const UpdateDrinkInfo = (props) => {
   const [drink, setDrink] = useState({
     drink_name: '',
     ingredients: '',
@@ -70,101 +75,97 @@ function UpdateDrinkInfo(props) {
       });
   };
 
+  const FormContainer = styled(Container)(({ theme }) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: theme.spacing(4),
+  }));
+
+  const FormTitle = styled(Typography)(({ theme }) => ({
+    marginBottom: theme.spacing(2),
+  }));
+
+  const Form = styled('form')({
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+  });
+
+  const FormField = styled(TextField)(({ theme }) => ({
+    marginBottom: theme.spacing(2),
+  }));
+
+  const SubmitButton = styled(Button)(({ theme }) => ({
+    marginTop: theme.spacing(2),
+  }));
+
   return (
-    <div className="UpdateDrinkInfo">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-8 m-auto">
-            <br />
-            <Link to="/" className="btn btn-outline-warning float-left">
-              Show Drink List
-            </Link>
-          </div>
-          <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Edit Drink</h1>
-            <p className="lead text-center">Update Drink's Info</p>
-          </div>
-        </div>
+    <FormContainer>
+      <FormTitle variant="h3" align="center">
+        Edit Drink
+      </FormTitle>
 
-        <div className="col-md-8 m-auto">
-          <form noValidate onSubmit={onSubmit}>
-            <div className="form-group">
-              <label htmlFor="drink_name">Drink Name</label>
-              <input
-                type="text"
-                placeholder="Name of the Drink"
-                name="drink_name"
-                className="form-control"
-                value={drink.drink_name}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+      <Form noValidate onSubmit={onSubmit}>
+        <FormField
+          fullWidth
+          label="Drink Name"
+          placeholder="Name of the Drink"
+          name="drink_name"
+          value={drink.drink_name}
+          onChange={onChange}
+          required
+        />
 
-            <div className="form-group">
-              <label htmlFor="ingredients">Ingredients</label>
-              <input
-                type="text"
-                placeholder="ingredients"
-                name="ingredients"
-                className="form-control"
-                value={drink.ingredients}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+        <FormField
+          fullWidth
+          label="Ingredients"
+          placeholder="Ingredients"
+          name="ingredients"
+          value={drink.ingredients}
+          onChange={onChange}
+          required
+        />
 
-            <div className="form-group">
-              <label htmlFor="recipe">recipe</label>
-              <input
-                type="text"
-                placeholder="recipe"
-                name="recipe"
-                className="form-control"
-                value={drink.recipe}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+        <FormField
+          fullWidth
+          label="Recipe"
+          placeholder="Recipe"
+          name="recipe"
+          value={drink.recipe}
+          onChange={onChange}
+          required
+        />
 
-            <div className="form-group">
-              <label htmlFor="image_url">image_url</label>
-              <input
-                type="text"
-                placeholder="image_url"
-                name="image_url"
-                className="form-control"
-                value={drink.image_url}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+        <FormField
+          fullWidth
+          label="Image URL"
+          placeholder="Image URL"
+          name="image_url"
+          value={drink.image_url}
+          onChange={onChange}
+        />
 
-            <div className="form-group">
-              <label htmlFor="author">author</label>
-              <textarea
-                type="text"
-                placeholder="author of the Drink"
-                name="author"
-                className="form-control"
-                value={drink.author}
-                onChange={onChange}
-              />
-            </div>
+        <FormField
+          fullWidth
+          label="Author"
+          placeholder="Author of the Drink"
+          name="author"
+          multiline
+          value={drink.author}
+          onChange={onChange}
+        />
 
-            <br />
+        <SubmitButton type="submit" variant="contained" color="primary">
+          Update Drink
+        </SubmitButton>
+      </Form>
 
-            <button
-              type="submit"
-              className="btn btn-outline-info btn-lg btn-block"
-            >
-              Update Drink
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+      <Typography variant="subtitle1" align="center" gutterBottom>
+        <Link to="/">Show Drink List</Link>
+      </Typography>
+    </FormContainer>
   );
-}
+};
 
 export default UpdateDrinkInfo;
