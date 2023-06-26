@@ -1,29 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 const DrinkCard = (props) => {
   const drink = props.drink;
 
   return (
-    <div className='drinkcard-container'>
-      <Link to={`/show-drink/${drink._id}`}>
-        <img
-        className='drink-image'
-          src={drink.image_url}
-          alt='Drinks'
-          height={200}
-        />
-      </Link>
-      <div className='desc'>
-        <h2>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        sx={{ height: 150 }}
+        image={drink.image_url}
+        title={drink._id}
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
           <Link to={`/show-drink/${drink._id}`}>{drink.drink_name}</Link>
-        </h2>
-        <h3>{drink.ingredients}</h3>
-        <p>{drink.recipe}</p>
-        <p>{drink.author}</p>
-      </div>
-    </div>
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Ingredients: {drink.ingredients}
+          Recipe: {drink.recipe}
+          Author: {drink.author}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 
