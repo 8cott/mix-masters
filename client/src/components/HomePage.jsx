@@ -1,11 +1,9 @@
 import React from 'react';
-import NavBar from './NavBar';
+import ImageCarousel from './ImageCarousel';
 
 function HomePage() {
   return (
     <div>
-       <NavBar/>
-
         <main>
           <section>
             <div className="container">
@@ -17,6 +15,7 @@ function HomePage() {
           </section>
           <section className="carousel">
             <h2 className="fs-secondary-heading fw-bold">Check These Out!</h2>
+            <ImageCarousel/>
           </section>
         </main>
 

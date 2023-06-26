@@ -56,6 +56,13 @@ const AppBarMUI = () => {
           >
             <MenuIcon />
           </IconButton>
+          <a href="/">
+            <img
+            className='mix-master-logo-nav'
+              src="/src/assets/images/mix-master-logo.png"
+              alt="logo"
+            />
+          </a>
           <Typography
             variant="h6"
             component="div"

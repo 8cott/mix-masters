@@ -139,6 +139,12 @@ svg {
   border-radius: 50%;
 }
 
+.mix-master-logo-nav{
+  width: 3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
 .nav-wrapper{
   display: flex;
   align-items: center;
@@ -196,4 +202,10 @@ a:hover{
 .button:active {
   transform: translateY(.25em);
   transition: 100ms;
+}
+
+.drinkcard-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
