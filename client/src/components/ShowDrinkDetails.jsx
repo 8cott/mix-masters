@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Divider } from '@mui/material';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import '../App.css';
@@ -22,7 +29,9 @@ function ShowDrinkDetails(props) {
   }, [id]);
 
   const handleDelete = () => {
-    const confirmed = window.confirm('Are you sure you want to delete this drink?');
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this drink?'
+    );
     if (confirmed) {
       axios
         .delete(`http://localhost:8000/drinks/${id}`)
@@ -41,68 +50,90 @@ function ShowDrinkDetails(props) {
     navigate(`/edit-drink/${drink._id}`);
   };
 
-  const DrinkItem = (
-    <div>
-      <table>
-        <tbody>
-          <tr>
-            <th>1</th>
-            <td>Drink Name</td>
-            <td>{drink.drink_name}</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>Ingredients</td>
-            <td>{drink.ingredients}</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>Recipe</td>
-            <td>{drink.recipe}</td>
-          </tr>
-          <tr>
-            <th>4</th>
-            <td>Image</td>
-            <td>
-              {drink.image_url && (
-                <img src={drink.image_url} alt="Drink" height={200} />
-              )}
-            </td>
-          </tr>
-          <tr>
-            <th>5</th>
-            <td>Author</td>
-            <td>{drink.author}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
-
   return (
     <div className="ShowDrinkDetails">
       <div className="container">
         <div className="row">
-          <div>
-            <br /> <br />
-            <Link to="/show-drink-list">Show Drink List</Link>
+          <div style={{ textAlign: 'left' }}>
+            <Link
+              to="/show-drink-list"
+              style={{
+                fontSize: '1.5rem',
+                color: 'white',
+                textShadow: '2px 2px 2px black',
+              }}
+            >
+              <br />← Back to Drink List
+            </Link>
           </div>
           <br />
           <div>
-            <h1>Drink's Record</h1>
-            <p>View Drink's Info</p>
-            <br />
-          </div>
-          <div>{DrinkItem}</div>
-          <div>
-            <button type="button" onClick={handleDelete}>
-              Delete Drink
-            </button>
-          </div>
-          <div>
-            <button type="button" onClick={handleEdit}>
-              Edit Drink
-            </button>
+            <Card>
+              <div>
+                <CardMedia
+                  sx={{ height: '40rem' }}
+                  image={drink.image_url}
+                  alt="Drinks"
+                  title={drink.drink_name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {drink.drink_name}
+                  </Typography>
+                  <Divider />
+                  <Typography
+                    paddingTop="1rem"
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ fontWeight: 'bold' }}
+                  >
+                    Ingredients:
+                  </Typography>
+                  <Typography
+                    paddingBottom="1rem"
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ whiteSpace: 'pre-line' }}
+                  >
+                    {drink.ingredients}
+                  </Typography>
+                  <Divider />
+                  <Typography
+                    paddingTop="1rem"
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ fontWeight: 'bold' }}
+                  >
+                    Recipe:
+                  </Typography>
+                  <Typography
+                    paddingBottom="1rem"
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ whiteSpace: 'pre-line' }}
+                  >
+                    {drink.recipe}
+                  </Typography>
+                  <Divider />
+                  <Typography
+                    paddingTop="1rem"
+                    variant="body2"
+                    color="text.secondary"
+                    style={{ fontWeight: 'bold' }}
+                  >
+                    Author:
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {drink.author}
+                  </Typography>
+                </CardContent>
+              </div>
+              <Divider />
+              <CardActions sx={{ justifyContent: 'center' }}>
+                <Button onClick={handleEdit}>Edit</Button>
+                <Button onClick={handleDelete}>Delete</Button>
+              </CardActions>
+            </Card>
           </div>
         </div>
       </div>

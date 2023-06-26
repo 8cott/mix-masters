@@ -31,7 +31,7 @@ const ImageCarousel = () => {
 };
 
 const Item = ({ drink }) => (
-  <Paper
+  <div
     style={{
       display: 'flex',
       flexDirection: 'column',
@@ -41,7 +41,7 @@ const Item = ({ drink }) => (
     }}
   >
     <DrinkCard drink={drink} />
-  </Paper>
+  </div>
 );
 
 export default ImageCarousel;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DrinkCard from './DrinkCard';
+import { Typography } from '@mui/material';
 import '../App.css';
 
 function ShowDrinkList() {
@@ -28,14 +29,20 @@ function ShowDrinkList() {
         <div className="row">
           <div>
             <br />
-            <h2>Drinks List</h2>
+            <Typography style={{ fontSize: '1.5rem', color: 'white', textShadow: '2px 2px 2px black' }}>Drinks</Typography>
             <br />
-            <br />
-            <hr />
           </div>
         </div>
 
-        <div className="list">{drinkList}</div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'flex-start',
+          }}
+        >
+          {drinkList}
+        </div>
       </div>
     </div>
   );
