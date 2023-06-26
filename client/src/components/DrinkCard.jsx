@@ -36,6 +36,7 @@ const DrinkCard = (props) => {
           </Typography>
           <Divider />
           <Typography
+          paddingTop="1rem"
             variant="body2"
             color="text.secondary"
             style={{ fontWeight: 'bold' }}
@@ -50,6 +51,7 @@ const DrinkCard = (props) => {
             }}
           >
             <Typography
+            paddingBottom="1rem"
               variant="body2"
               color="text.secondary"
               style={{ whiteSpace: 'pre-line' }}
@@ -59,6 +61,7 @@ const DrinkCard = (props) => {
           </div>
           <Divider />
           <Typography
+          paddingTop="1rem"
             variant="body2"
             color="text.secondary"
             style={{ fontWeight: 'bold' }}
@@ -70,6 +73,7 @@ const DrinkCard = (props) => {
               maxHeight: '100px',
               overflowY: 'auto',
               paddingRight: '10px',
+              paddingBottom: "1rem"
             }}
           >
             <Typography
