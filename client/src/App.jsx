@@ -12,11 +12,12 @@ import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import StickyFooter from './components/FooterNav';
 
 const App = () => {
   return (
     <Router>
-      <AppBarMUI />
+      <AppBarMUI/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route exact path="/show-drink-list" element={<ShowDrinkList />} />
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>
+      <StickyFooter/>
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
