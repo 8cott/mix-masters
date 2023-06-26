@@ -209,3 +209,21 @@ a:hover{
   align-items: center;
   justify-content: center;
 }
+
+.carousel{
+  margin-top: 7rem;
+  margin-bottom: -7rem;
+}
+
+.footer-nav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-nav>ul{
+  display: flex;
+}
+
+.footer-nav>li{
+  text-decoration: none;
+}

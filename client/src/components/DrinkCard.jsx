@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,7 +10,7 @@ import '../App.css';
 
 const DrinkCard = (props) => {
   const drink = props.drink;
-
+  const ingredients = drink.ingredients.split(',');
   return (
     <Card
       sx={{
