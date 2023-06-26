@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import LinkMui from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState({
+  const [inputValue, setInputValue] = React.useState({
     email: '',
     password: '',
     username: '',
@@ -65,55 +78,102 @@ const Signup = () => {
   };
 
   return (
-    <div className='form_container'>
-      <h2>Signup Account</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Email</label>
-          <input
-            type='email'
-            name='email'
-            value={email}
-            placeholder='Enter your email'
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='username'>Username</label>
-          <input
-            type='text'
-            name='username'
-            value={username}
-            placeholder='Enter your username'
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-            type='password'
-            name='password'
-            value={password}
-            placeholder='Enter your password'
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='confirmPassword'>Confirm Password</label>
-          <input
-            type='password'
-            name='confirmPassword'
-            value={confirmPassword}
-            placeholder='Enter your password again'
-            onChange={handleOnChange}
-          />
-        </div>
-        <button type='submit'>Submit</button>
-        <span>
-          Already have an account? <Link to={'/login'}>Login</Link>
-        </span>
-      </form>
-    </div>
+    <ThemeProvider theme={createTheme()}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="username"
+                  name="username"
+                  required
+                  fullWidth
+                  id="username"
+                  label="Username"
+                  autoFocus
+                  value={username}
+                  onChange={handleOnChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="email"
+                  name="email"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  value={email}
+                  onChange={handleOnChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="new-password"
+                  name="password"
+                  required
+                  fullWidth
+                  id="password"
+                  label="Password"
+                  type="password"
+                  value={password}
+                  onChange={handleOnChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="new-password"
+                  name="confirmPassword"
+                  required
+                  fullWidth
+                  id="confirmPassword"
+                  label="Confirm Password"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={handleOnChange}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign Up
+            </Button>
+            <Grid container justifyContent="flex-end">
+              <Grid item>
+                <LinkMui component={Link} to="/login" variant="body2">
+                  Already have an account? Sign in
+                </LinkMui>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 };
 

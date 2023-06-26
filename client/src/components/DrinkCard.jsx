@@ -6,9 +6,10 @@ const DrinkCard = (props) => {
   const drink = props.drink;
 
   return (
-    <div className='card-container'>
+    <div className='drinkcard-container'>
       <Link to={`/show-drink/${drink._id}`}>
         <img
+        className='drink-image'
           src={drink.image_url}
           alt='Drinks'
           height={200}
