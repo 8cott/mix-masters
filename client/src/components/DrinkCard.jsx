@@ -11,7 +11,7 @@ const DrinkCard = (props) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
+        sx={{ height: 150 }}
         image={drink.image_url}
         title={drink._id}
       />
