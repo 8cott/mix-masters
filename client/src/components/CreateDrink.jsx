@@ -88,10 +88,10 @@ const CreateDrink = () => {
       flexDirection: 'column',
       alignItems: 'center',
       mb: 4,
-      marginTop:"5rem"
+      marginTop:"5.5rem"
     }}>
     <Container>
-      <Typography variant="h2" align="center" variant="h5">
+      <Typography component="h2" align="center" variant="h5">
         Create New Drink
       </Typography>
 
