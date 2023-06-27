@@ -14,7 +14,7 @@ const DrinkCard = (props) => {
   return (
     <Card
       sx={{
-        maxWidth: 345,
+        width: 345,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',

@@ -71,7 +71,7 @@ function ShowDrinkDetails(props) {
             <Card>
               <div>
                 <CardMedia
-                  sx={{ height: '40rem' }}
+                  sx={{ height: '20rem' }}
                   image={drink.image_url}
                   alt="Drinks"
                   title={drink.drink_name}
